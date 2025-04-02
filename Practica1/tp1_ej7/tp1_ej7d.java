@@ -1,5 +1,5 @@
 package tp1_ej7;
-import TP1.Estudiante;
+import TP1.ej3.Estudiante;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;

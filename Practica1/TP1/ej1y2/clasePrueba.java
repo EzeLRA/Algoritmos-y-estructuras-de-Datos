@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ej1y2;
 
 public class clasePrueba {
    

@@ -1,10 +1,12 @@
-package TP1;
+package TP1.ej3;
 
 //Ejercicio 3
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Test {
+    
+    //Crear una clase libreria con esta seccion
     
     public static int numeroAleatorioEnRango(int minimo, int maximo) {
     // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1

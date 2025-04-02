@@ -6,6 +6,22 @@ import java.util.List;
 
 public class ejercicio7 {
     
+    //Solucion alternativa
+    public static boolean esCapicua2(ArrayList<Integer> list) {
+	boolean capicua = true;
+	int i = 0;
+	int j = list.size()-1;
+	while ((i!=j) && (i<j)){
+            if (list.get(i)!=list.get(j)) {
+                capicua=false;
+            }
+            i++;
+            j--;
+        }
+			
+	return capicua;
+    }
+    
     public static boolean esCapicua(ArrayList<Integer> lista){
         int num = 0;
         int res = 0;

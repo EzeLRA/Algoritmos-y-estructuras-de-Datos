@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ej4;
 
 public class ejercicio4 {
     

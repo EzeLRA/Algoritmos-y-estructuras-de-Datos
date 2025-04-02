@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ej3;
 
 public class Estudiante {
     //Atributos

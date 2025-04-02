@@ -1,4 +1,4 @@
-package TP1;
+package TP1.ej5;
 
 public class Datos {
     private int max,min,cant,total;
