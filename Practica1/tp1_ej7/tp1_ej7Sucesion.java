@@ -57,12 +57,20 @@ public class tp1_ej7Sucesion {
     
     public static ArrayList<Integer> combinarOrdenado(ArrayList<Integer> lista1,ArrayList<Integer> lista2){
         ArrayList<Integer> listaNueva = new ArrayList();
-        /*
-            Rediseñar el algoritmo de modo que ingrese los elementos de forma ordenada
-        */
-        listaNueva.addAll(lista1);
-        listaNueva.addAll(lista2);
-        Collections.sort(listaNueva);
+        
+        while(!(lista1.isEmpty())&&!(lista2.isEmpty())){
+            if(lista1.get(0) < lista2.get(0)){
+                listaNueva.add(lista1.remove(0));
+            }else{
+                listaNueva.add(lista2.remove(0));
+            }
+        }
+        if(!(lista1.isEmpty())){
+            listaNueva.addAll(lista1);
+        }else{
+            listaNueva.addAll(lista2);
+        }
+        
         return listaNueva;
     }
     
