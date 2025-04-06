@@ -1,6 +1,7 @@
 package tp1_ej7;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,6 +55,17 @@ public class tp1_ej7Sucesion {
         }
     }
     
+    public static ArrayList<Integer> combinarOrdenado(ArrayList<Integer> lista1,ArrayList<Integer> lista2){
+        ArrayList<Integer> listaNueva = new ArrayList();
+        /*
+            Rediseñar el algoritmo de modo que ingrese los elementos de forma ordenada
+        */
+        listaNueva.addAll(lista1);
+        listaNueva.addAll(lista2);
+        Collections.sort(listaNueva);
+        return listaNueva;
+    }
+    
     public static void main(String args[]){
         //Generacion de lista con sucesion
         List<Integer> lista = calcularSucesion(10);
@@ -64,7 +76,8 @@ public class tp1_ej7Sucesion {
         //Inversion de orden
         System.out.println("");
         
-        ArrayList<Integer> lista2 = (ArrayList<Integer>) lista;
+        ArrayList<Integer> lista2 = new ArrayList();
+        lista2.addAll(lista);
         
         invertirArrayList(lista2);
         
@@ -76,12 +89,24 @@ public class tp1_ej7Sucesion {
         
         System.out.println("");
         
-        //Corregir
+        LinkedList<Integer> lista3 = new LinkedList();
+        lista3.addAll(lista);
         
-        //LinkedList<Integer> lista3 = (LinkedList<Integer>) lista;
+        System.out.println(sumarLinkedList(lista3));
+        System.out.println("");
         
-        //System.out.println(sumarLinkedList(lista3));
+        //Fusion de listas ordenadas
         
+        ArrayList<Integer> listaA = (ArrayList<Integer>) calcularSucesion(30);
+        Collections.sort(listaA);
+        ArrayList<Integer> listaB = (ArrayList<Integer>) calcularSucesion(10);
+        Collections.sort(listaB);
+        
+        ArrayList<Integer> lista4 = combinarOrdenado(listaA,listaB);
+        
+        for(Integer num:lista4){
+            System.out.println(num);
+        }
         
     }
 }
