@@ -1,5 +1,7 @@
 package practica1;
 
+//Prueba
+
 public class AplicacionDePrueba {
 
 	/**
