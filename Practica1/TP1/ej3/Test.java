@@ -1,6 +1,6 @@
 package TP1.ej3;
 
-//Ejercicio 3__
+//Ejercicio 3
 
 import java.util.concurrent.ThreadLocalRandom;
 
