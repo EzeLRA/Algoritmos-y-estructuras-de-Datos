@@ -1,5 +1,5 @@
 package tp2.ejercicio1;
-
+import Practica1.TP1.ej8.Queue;
 
 
 public class BinaryTree <T> {
@@ -92,8 +92,58 @@ public class BinaryTree <T> {
 	    	return hojasD + hojasI;
 	    }
 	}
-		
-		
+	
+        //Inserta elementos por niveles
+        public void add(T data) {
+            if (this.getData()==null) {
+                this.setData(data);
+		return;
+            }
+            Queue<BinaryTree<T>> queue = new Queue<BinaryTree<T>>();
+            queue.enqueue(this);
+            while (!queue.isEmpty()) {
+                BinaryTree<T> e = queue.dequeue();
+		if (e.hasLeftChild()) {
+                    queue.enqueue(e.getLeftChild());
+		} else {
+                    e.addLeftChild(new BinaryTree<T>(data));
+                    break;
+		}
+		if (e.hasRightChild()) {
+                    queue.enqueue(e.getRightChild());
+                } else {
+                    e.addRightChild(new BinaryTree<T>(data));
+                    break;
+                }
+            }
+	}
+        
+        //Inserta arboles por niveles
+        public void add(BinaryTree<T> tree) {
+            if (this.getData()==null) {
+                this.setData(tree.getData());
+		this.addLeftChild(tree.getLeftChild());
+		this.addRightChild(tree.getRightChild());
+		return;
+            }
+            Queue<BinaryTree<T>> queue = new Queue<BinaryTree<T>>();
+            queue.enqueue(this);
+            while (!queue.isEmpty()) {
+                BinaryTree<T> e = queue.dequeue();
+		if (e.hasLeftChild()) {
+                    queue.enqueue(e.getLeftChild());
+		} else {
+                    e.addLeftChild(tree);
+                    break;
+		}
+		if (e.hasRightChild()) {
+                    queue.enqueue(e.getRightChild());
+		} else {
+                    e.addRightChild(tree);
+                    break;
+                }
+            }
+        }
     	 
     public BinaryTree<T> espejo(){
 		       		  
