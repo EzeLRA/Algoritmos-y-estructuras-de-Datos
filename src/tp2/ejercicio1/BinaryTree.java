@@ -1,5 +1,5 @@
 package tp2.ejercicio1;
-import Practica1.TP1.ej8.Queue;
+import tp1.ej8.Queue;
 
 
 public class BinaryTree <T> {
@@ -75,26 +75,36 @@ public class BinaryTree <T> {
 	public String toString() {
 		return this.getData().toString();
 	}
-
-	public  int contarHojas() {
+        
+        public void printPreorden() {
+            System.out.println(this.getData());
+            if (this.hasLeftChild()) {
+                this.getLeftChild().printPreorden();
+            }
+            if (this.hasRightChild()) {
+                this.getRightChild().printPreorden();
+            }
+        }
+        
+	public int contarHojas() {
 		
-	    if(this.isLeaf()){
-	    	return 1;
-	    }else{
-	    	int hojasD = 0;
-	    	int hojasI = 0;
-	    	if(this.hasLeftChild()){
-	    		hojasD = this.getLeftChild().contarHojas();
-	    	}
-	    	if(this.hasRightChild()){
-	    		hojasI = this.getRightChild().contarHojas();
-	    	}
-	    	return hojasD + hojasI;
-	    }
-	}
-	
+	    if (this.isLeaf()) {
+		   return 1;
+	   }
+	   int countLeft = 0;
+	   int countRight = 0;
+	   if (this.hasLeftChild()) {
+		   countLeft = this.getLeftChild().contarHojas();
+	   }
+	   if (this.hasRightChild()) {
+		   countRight = this.getRightChild().contarHojas();
+	   }
+	   
+	   return countLeft + countRight;
+        }
+        
         //Inserta elementos por niveles
-        public void add(T data) {
+        public void addNivelado(T data) {
             if (this.getData()==null) {
                 this.setData(data);
 		return;
@@ -119,7 +129,7 @@ public class BinaryTree <T> {
 	}
         
         //Inserta arboles por niveles
-        public void add(BinaryTree<T> tree) {
+        public void addNivelado(BinaryTree<T> tree) {
             if (this.getData()==null) {
                 this.setData(tree.getData());
 		this.addLeftChild(tree.getLeftChild());
@@ -144,10 +154,19 @@ public class BinaryTree <T> {
                 }
             }
         }
-    	 
+    
+    //Recorre el arbol y agrega en el arbol auxiliar los elementos de forma inversa
     public BinaryTree<T> espejo(){
-		       		  
- 	   return null;
+        BinaryTree<T> tree = new BinaryTree<T>(this.getData());
+        if (!this.isLeaf()) {
+            if (this.hasLeftChild()) {
+                tree.addRightChild(this.getLeftChild().espejo());
+            }    
+            if (this.hasRightChild()) {
+                tree.addLeftChild(this.getRightChild().espejo());
+            } 	    		
+        }
+ 	return tree;
     }
 
 	// 0<=n<=m

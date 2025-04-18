@@ -5,9 +5,9 @@ public class ej2 {
 
 	public static void main(String[] args) {
 		BinaryTree<Integer> arbol = new BinaryTree();
-		arbol.add(2);
-                arbol.add(3);
-                arbol.add(4);
+		arbol.addNivelado(2);
+                arbol.addNivelado(3);
+                arbol.addNivelado(4);
                 System.out.println(arbol.contarHojas());
 	}
 
