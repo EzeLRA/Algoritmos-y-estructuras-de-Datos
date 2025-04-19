@@ -169,10 +169,54 @@ public class BinaryTree <T> {
  	return tree;
     }
 
-	// 0<=n<=m
+	// 0<=n<=m  Se imprime entre los niveles determinadors por n y m
 	public void entreNiveles(int n, int m){
-		
-   }
+            int nivel = 0;
+            BinaryTree<T> ab = null;
+            Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+            cola.enqueue(this);
+            cola.enqueue(null);
+            while ((!cola.isEmpty())&&(nivel >= n)&&(nivel <= m)){
+                ab = cola.dequeue();
+                if (ab != null) {
+                    System.out.print(ab.getData());
+                    if ((ab.hasLeftChild())&&(nivel <= m)) {
+                        cola.enqueue(ab.getLeftChild());
+                    }
+                    if ((ab.hasRightChild())&&(nivel <= m)) {
+                        cola.enqueue(ab.getRightChild());
+                    }
+                } else if (!cola.isEmpty()) {
+                    nivel ++;
+                    System.out.println();
+                    cola.enqueue(null);
+                }
+            }
+            //System.out.println();
+            //System.out.println(nivel);
+        }
+        
+        public void printLevelTraversal() {
+            BinaryTree<T> ab = null;
+            Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+            cola.enqueue(this);
+            cola.enqueue(null);
+            while (!cola.isEmpty()) {
+                ab = cola.dequeue();
+                if (ab != null) {
+                    System.out.print(ab.getData());
+                    if (ab.hasLeftChild()) {
+                        cola.enqueue(ab.getLeftChild());
+                    }
+                    if (ab.hasRightChild()) {
+                        cola.enqueue(ab.getRightChild());
+                    }
+                } else if (!cola.isEmpty()) {
+                    System.out.println();
+                    cola.enqueue(null);
+                }
+            }           
+        }
 		
 }
 
