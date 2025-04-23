@@ -21,7 +21,8 @@ public class ContadorArbol{
     public List<Integer> numerosPares1(){
         List<Integer> res = new LinkedList();
         
-        //Desarrollar
+        System.out.println(this.getArbol().getData());
+        //..
         
         return res;
     }
