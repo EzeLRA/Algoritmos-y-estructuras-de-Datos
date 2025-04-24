@@ -18,12 +18,46 @@ public class ContadorArbol{
         this.arbol = arbol;
     }
       
-    public List<Integer> numerosPares1(){
-        List<Integer> res = new LinkedList();
+    public List<Integer> numerosPares(){
+        List<Integer> res ;
         
-        System.out.println(this.getArbol().getData());
-        //..
+        res = this.retornarParesInOrden(this.getArbol());
         
         return res;
     }
+    
+    public List<Integer> retornarParesInOrden(BinaryTree<Integer> ab){
+        List<Integer> res = new LinkedList();
+        
+        if(ab.hasLeftChild()){
+            this.retornarParesInOrden(ab.getLeftChild());
+        }
+        if(ab.getData() % 2 == 0){
+            res.add(ab.getData());
+            return res;
+        }
+        if(ab.hasRightChild()){
+            this.retornarParesInOrden(ab.getRightChild());
+        }
+        
+        return res;
+    }
+    
+    public List<Integer> retornarParesPosOrden(BinaryTree<Integer> ab){
+        List<Integer> res = new LinkedList();
+        
+        if(ab.hasLeftChild()){
+            this.retornarParesInOrden(ab.getLeftChild());
+        }
+        if(ab.hasRightChild()){
+            this.retornarParesInOrden(ab.getRightChild());
+        }
+        if(ab.getData() % 2 == 0){
+            res.add(ab.getData());
+            return res;
+        }
+        
+        return res;
+    }
+    
 }
