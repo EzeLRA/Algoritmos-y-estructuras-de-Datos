@@ -16,18 +16,24 @@ public class ProfundidadDeArbolBinario {
         this.arbol = arbol;
     }   
     
-    //Corregir
-    
     public int sumaElementosProfundidad(int p){
-        return this.contabilizarRecorrido(this.getArbol() , p);
+        return (this.getArbol() != null && !this.getArbol().isEmpty() ? this.contabilizarRecorrido(this.getArbol(),0, p) : 0);
     }
     
-    private int contabilizarRecorrido(BinaryTree<Integer> ar , int p){
+    private int contabilizarRecorrido(BinaryTree<Integer> ar,int nivel , int p){
+        if(nivel == p){
+            return (ar.getData() != null ? ar.getData() : 0);
+        }
+        
         int cant = 0;
         
-        if(ar.hasLeftChild()) cant += this.contabilizarRecorrido(ar.getLeftChild(), p);
-        if(ar.hasRightChild()) cant += this.contabilizarRecorrido(ar.getRightChild(), p);
-        if(ar.getData() == p) return cant + ar.getData(); else return cant;
+        if(ar.hasLeftChild()){
+            cant += this.contabilizarRecorrido(ar.getLeftChild(),nivel +1 , p);
+        }
+        if(ar.hasRightChild()){
+            cant += this.contabilizarRecorrido(ar.getRightChild(),nivel+1, p);
+        }
+        return cant;
     }
     
 }
