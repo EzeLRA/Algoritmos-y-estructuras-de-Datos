@@ -32,8 +32,9 @@ public class ej2 {
         
         GeneralTree<Integer> a = new GeneralTree<Integer>(0, childen);
         
+        //Clase que procesa
         RecorridosAG r = new RecorridosAG();
-        List<Integer> l = r.numerosImparesMayoresQuePreOrden(a, 10);
+        List<Integer> l = r.numerosImparesMayoresQuePorNiveles(a, 10);
         
         for(int i=0 ; i<l.size() ; i++){
             System.out.println(l.get(i));
