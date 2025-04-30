@@ -1,5 +1,6 @@
 package tp2.ejercicio7;
 import tp2.ejercicio1.BinaryTree;
+import tp2.ejercicio9.NodoEspecial;
 
 public class ParcialArboles {
     private BinaryTree<Integer> arbol;
@@ -64,4 +65,26 @@ public class ParcialArboles {
         
         return cumple;
     }
+    
+    //Ejercicio 9
+    public BinaryTree<NodoEspecial> sumAndDif(BinaryTree<Integer> arbol){
+        BinaryTree<NodoEspecial> res=new BinaryTree<NodoEspecial>();
+        if ((arbol!=null) && (!arbol.isEmpty())) obtenerSumasRestas(arbol, res, 0, 0);
+        return res;
+    }
+    
+    private void obtenerSumasRestas(BinaryTree<Integer> arbol, BinaryTree<NodoEspecial> abSaD, int suma, int padre) {
+        int num=0;
+        if (arbol.getData()!=null) num=arbol.getData();
+        abSaD.setData(new NodoEspecial(num+suma, num-padre));
+        if (arbol.hasLeftChild()) {
+            abSaD.addLeftChild(new BinaryTree<>());
+            obtenerSumasRestas(arbol.getLeftChild(), abSaD.getLeftChild(), num+suma, num);
+        }
+        if (arbol.hasRightChild()) {
+            abSaD.addRightChild(new BinaryTree<>());
+            obtenerSumasRestas(arbol.getRightChild(), abSaD.getRightChild(), num+suma, num);
+        }
+    }
+    
 }
