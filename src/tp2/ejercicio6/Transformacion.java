@@ -12,8 +12,6 @@ public class Transformacion {
         this.arbol = arbol;
     }
     
-    //Probar
-    
     public BinaryTree<Integer> suma(){
         if(this.getArbol() == null){
             return new BinaryTree<Integer>(0); 
