@@ -35,6 +35,7 @@ public class ej1 {
     private void procesar(GeneralTree<Integer> ar,List<Integer> l,int num,boolean fin){
         if(ar.hasChildren()){
             List<GeneralTree<Integer>> hijos = ar.getChildren();
+            //Recorrido de 1 intento
         }
     }
     
